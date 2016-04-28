@@ -1,6 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3). -->
 <openerp>
 <data>
+
+<!-- Product Website Pack Block -->
+
+<record id="product_website_pack_block_search_view" model="ir.ui.view">
+    <field name="name">Product Website Pack Block search</field>
+    <field name="model">product.website.pack.block</field>
+    <field name="arch" type="xml">
+        <search string="Block">
+            <field name="name" string="Block" filter_domain="[('name','ilike',self)]"/>
+        </search>
+    </field>
+</record>
+
+<record id="product_website_pack_block_tree_view" model="ir.ui.view">
+    <field name="name">Product Website Pack Block tree</field>
+    <field name="model">product.website.pack.block</field>
+    <field name="arch" type="xml">
+        <tree string="Block">
+            <field name="sequence" invisible="1"/>
+            <field name="name"/>
+        </tree>
+    </field>
+</record>
+
+<record id="product_website_pack_block_form_view" model="ir.ui.view">
+    <field name="name">Product Website Pack Block form</field>
+    <field name="model">product.website.pack.block</field>
+    <field name="arch" type="xml">
+        <form string="Block">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="product_website_pack_block_action" model="ir.actions.act_window">
+    <field name="name">Product Website Pack Blocks</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">product.website.pack.block</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" eval="False"/>
+</record>
+<menuitem
+    action="product_website_pack_block_action"
+    id="product.menu_product_website_pack_block"
+    parent="product.prod_config_main"
+    sequence="45"/>
+
+<!-- Product Website Pack -->
+
+<record id="product_website_pack_search_view" model="ir.ui.view">
+    <field name="name">Product Website Pack search</field>
+    <field name="model">product.website.pack</field>
+    <field name="arch" type="xml">
+        <search string="Pack">
+            <field name="name" string="Pack" filter_domain="[('name','ilike',self)]"/>
+            <field name="block"/>
+            <field name="public_categ_ids"/>
+            <group  expand='0' string='Group by...'>
+               <filter string='Block' domain="[]" context="{'group_by' : 'block'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+
+<record id="product_website_pack_tree_view" model="ir.ui.view">
+    <field name="name">Product Website Pack tree</field>
+    <field name="model">product.website.pack</field>
+    <field name="arch" type="xml">
+        <tree string="Pack">
+            <field name="name"/>
+            <field name="block"/>
+            <field name="public_categ_ids"/>
+        </tree>
+    </field>
+</record>
+
+<record id="product_website_pack_form_view" model="ir.ui.view">
+    <field name="name">Product Website Pack form</field>
+    <field name="model">product.website.pack</field>
+    <field name="arch" type="xml">
+        <form string="Pack">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="block"/>
+                    <field name="public_categ_ids" widget="many2many_tags"/>
+                </group>
+                <field name="line_ids">
+                    <tree string="Sales Order Lines" editable="bottom">
+                        <field name="sequence" widget="handle"/>
+                        <field name="product_id"/>
+                        <field name="default_checked"/>
+                    </tree>
+                </field>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<record id="product_website_pack_action" model="ir.actions.act_window">
+    <field name="name">Product Website Packs</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">product.website.pack</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" eval="False"/>
+</record>
+<menuitem
+    action="product_website_pack_action"
+    id="product.menu_product_website_pack"
+    parent="product.prod_config_main"
+    sequence="40"/>
 
 </data>
 </openerp>

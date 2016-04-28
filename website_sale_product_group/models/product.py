@@ -2,15 +2,24 @@
 # © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import api, fields, models, _
+from openerp import fields, models
 
 
-class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
 
     website_pack_ids = fields.One2many(
         comodel_name='product.website.pack.line', inverse_name='product_id')
 
 
-class ProductProduct(models.Model):
-    _inherit = 'product.product'
+class ProductPublicCategory(models.Model):
+    _inherit = "product.public.category"
+
+    website_pack_ids = fields.Many2many(
+        comodel_name='product.website.pack',
+        relation='product_website_pack_product_public_category_rel',
+        column1='category_id',
+        column2='pack_id',
+        string='Website Packs',
+        help="Those packs are used to group similar products for "
+             "e-commerce.")
