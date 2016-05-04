@@ -4,18 +4,34 @@
 
 <template id="nav_by_category" name="Website Category Navigation">
     <t t-if="category and category.show_child_category">
-        <div class="row mb32 text-center" t-if="category.child_id">
-            <t t-foreach="category.child_id" t-as="cat">
-                <div id="image_category" class="col-md-2">
-                        <span t-field="cat.image"
-                              t-field-options='{"widget": "image",
-                                                "class": "",
-                                                "alt-field": "name"}'
-                        />
-                        <span class="text-center" t-esc="cat.name"/>
-                </div>
-            </t>
+        <div class="row mt16 mb16">
+            <div class="col-md-12">
+                <h3>Categories</h3>
+                <hr/>
+            </div>
         </div>
+        <div class="row mb16 text-center" t-if="category.child_id">
+            <div class="col-md-3" t-foreach="category.child_id" t-as="cat">
+                <a t-att-href="keep('/shop/category/' + slug(cat), category=0)">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="image_category">
+                                <span t-field="cat.image"
+                                      t-field-options='{"widget": "image",
+                                                        "class": "",
+                                                        "alt-field": "name"}'
+                                />
+
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="text-center" t-esc="cat.name"/>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <hr/>
     </t>
 </template>
 
