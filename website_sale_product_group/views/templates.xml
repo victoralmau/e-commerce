@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3). -->
+<openerp>
+<data>
+
+<template id="product_pack_item" name="Product pack item">
+    <form action="/shop/cart/update" method="post">
+        <div class="row">
+            <div class="col-md-12">
+                <span t-field="product_pack.block.name"/>
+            </div>
+        </div>
+        <t t-foreach="product_pack.line_ids" t-as="pack_item">
+            <div class="row">
+                <div class="col-md-1">
+                    <input type="checkbox" t-att-value="pack_item.default_checked"/>
+                </div>
+                <div class="col-md-8">
+                    <span t-field="pack_item.product_id.name"/>
+                </div>
+                <div class="col-md-2">
+                    <span t-field="pack_item.product_id.description_sale"/>
+                </div>
+                <div class="col-md-1">
+                    <span t-field="pack_item.product_id.lst_price"
+                        t-field-options='{
+                           "widget": "monetary",
+                           "display_currency": "website.pricelist_id.currency_id"
+                       }'/>
+                </div>
+            </div>
+        </t>
+    </form>
+</template>
+
+<template id="product_packs_view" inherit_id="website_sale.products" active="False" customize_show="True" name="Product Pack View">
+  <xpath expr="//div[@id='products_grid']" position="inside">
+    <t t-foreach="product_packs" t-as="product_pack">
+      <div class="oe_product oe_list oe_product_cart">
+        <t t-call="website_sale_product_group.product_pack_item"/>
+      </div>
+    </t>
+  </xpath>
+</template>
+
+</data>
+</openerp>

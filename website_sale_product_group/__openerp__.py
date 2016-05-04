@@ -17,6 +17,7 @@
     'data': [
         'views/website_sale_product_group.xml',
         'views/product_view.xml',
+        'views/templates.xml',
         'security/ir.model.access.csv',
     ],
     'author': 'Tecnativa, '
