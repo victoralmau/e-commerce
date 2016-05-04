@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="nav_by_category" name="Website Category Navigation">
+    <t t-if="category and category.show_child_category">
+        <div class="row mb32 text-center" t-if="category.child_id">
+            <t t-foreach="category.child_id" t-as="cat">
+                <div id="image_category" class="col-md-2">
+                        <span t-field="cat.image"
+                              t-field-options='{"widget": "image",
+                                                "class": "",
+                                                "alt-field": "name"}'
+                        />
+                        <span class="text-center" t-esc="cat.name"/>
+                </div>
+            </t>
+        </div>
+    </t>
+</template>
+
+<template id="products" inherit_id="website_sale.products">
+    <xpath expr="//div[@id='products_grid']/table" position="before">
+        <div class="row">
+            <div class="col-md-12">
+                <t t-call="website_sale_by_category.nav_by_category"/>
+            </div>
+        </div>
+
+    </xpath>
+</template>
+
+</data>
+</openerp>

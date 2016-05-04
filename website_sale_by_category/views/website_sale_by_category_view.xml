@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<!-- Product Public Categories -->
+<record id="product_public_category_form_view" model="ir.ui.view">
+    <field name="name">product.public.category.form.inherit</field>
+    <field name="model">product.public.category</field>
+    <field name="inherit_id"
+           ref="website_sale.product_public_category_form_view"/>
+    <field name="arch" type="xml">
+        <field name="sequence" position="before">
+            <field name="show_child_category"/>
+        </field>
+    </field>
+</record>
+
+<record id="product_public_category_tree_view" model="ir.ui.view">
+    <field name="name">product.public.category.tree.inherit</field>
+    <field name="model">product.public.category</field>
+    <field name="inherit_id"
+           ref="website_sale.product_public_category_tree_view"/>
+    <field name="arch" type="xml">
+        <field name="complete_name" position="after">
+            <field name="show_child_category"/>
+        </field>
+    </field>
+</record>
+
+</data>
+</openerp>
