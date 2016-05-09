@@ -19,15 +19,16 @@
 
     function add_to_cart_group(ev){
         ev.preventDefault();
+        var product_ids = [];
+        var $check = $(this);
         $( ".chk_line:checked" ).each(function() {
-            debugger
             var $check = $(this);
-            var line_id;
-            var value = 1;
-            openerp.jsonRpc("/shop/cart/update_json", 'call', {
+            product_ids.push($check.data('product_id'));
+        });
+        openerp.jsonRpc("/shop/cart/products_update_json", 'call', {
             'line_id': null,
-            'product_id': parseInt($check.data('product_id')),
-            'set_qty': value})
+            'product_ids': product_ids,
+            'set_qty': 1})
             .then(function (data) {
                 debugger
                 if (!data.quantity) {
@@ -37,14 +38,7 @@
                 var $q = $(".my_cart_quantity");
                 $q.parent().parent().removeClass("hidden", !data.quantity);
                 $q.html(data.cart_quantity).hide().fadeIn(600);
-
-//                $("#cart_total").replaceWith(data['website_sale.total']);
+                $("#cart_total").replaceWith(data['website_sale.total']);
             });
-
-
-        });
-
-
-    }
-
+    };
 })();

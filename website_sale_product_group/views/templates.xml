@@ -6,32 +6,35 @@
 
 <template id="product_pack_item" name="Product pack item">
     <form id="update_cart" action="/shop/cart/update" method="post">
-        <div class="row">
-            <div class="col-md-12">
-                <span t-field="product_pack.block.name"/>
-            </div>
+        <div class="row mb16">
+            <h4 t-field="product_pack.block.name"/>
+            <hr/>
         </div>
         <t t-foreach="product_pack.line_ids" t-as="pack_item">
-            <div class="row">
-                <div class="col-md-1">
-                    <input type="checkbox" class="chk_line"
-                           t-att-data-lst_price="pack_item.product_id.lst_price"
-                           t-att-data-product_id="pack_item.product_id.id"
-                           t-att-value="pack_item.default_checked"/>
+            <div class="row mb8">
+                <div class="row">
+                    <div class="col-md-1">
+                        <input type="checkbox" class="chk_line"
+                               t-att-data-lst_price="pack_item.product_id.lst_price"
+                               t-att-data-product_id="pack_item.product_id.id"
+                               t-att-checked="'checked' if pack_item.default_checked else None"/>
+                    </div>
+                    <div class="col-md-9">
+                        <strong><span t-field="pack_item.product_id.name"/></strong>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <span t-field="pack_item.product_id.lst_price"
+                            t-field-options='{
+                               "widget": "monetary",
+                               "display_currency": "website.pricelist_id.currency_id"
+                           }'/>
+                        <input name="product_id" t-att-value="pack_item.product_id.id" type="hidden"/>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <span t-field="pack_item.product_id.name"/>
-                </div>
-                <div class="col-md-2">
-                    <span t-field="pack_item.product_id.description_sale"/>
-                </div>
-                <div class="col-md-1 text-right">
-                    <span t-field="pack_item.product_id.lst_price"
-                        t-field-options='{
-                           "widget": "monetary",
-                           "display_currency": "website.pricelist_id.currency_id"
-                       }'/>
-                    <input name="product_id" t-att-value="pack_item.product_id.id" type="hidden"/>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <span t-field="pack_item.product_id.description_sale"/>
+                    </div>
                 </div>
             </div>
         </t>
@@ -40,15 +43,12 @@
 
 <template id="total_selected_amount">
     <div class="row text-right">
-        <div class="col-md-4 col-md-offset-8">
+        <div class="pull-right mb16">
             <h5>Total Of Your Selection: <span id="total_selected"/></h5>
             <button id="add_to_cart"
-                    class="btn btn-default fa fa-shopping-cart a-submit"
+                    class="btn btn-primary btn-md a-submit"
                     type="submit"
-                    form="update_cart"
-            />
-            <!--<a class="btn btn-default fa fa-shopping-cart a-submit"/>-->
-            <hr/>
+                    form="update_cart">Add to cart</button>
         </div>
     </div>
 </template>

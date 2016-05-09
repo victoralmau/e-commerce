@@ -28,3 +28,19 @@ class WebsiteSale(website_sale):
             result.qcontext['product_packs'] = product_pack_obj.browse(
                 cr, uid, packs_ids, context=context)
         return result
+
+    @http.route(['/shop/cart/products_update_json'], type='json',
+                auth="public", methods=['POST'], website=True)
+    def cart_products_update_json(
+            self, product_ids, line_id, add_qty=None, set_qty=None):
+        order = request.website.sale_get_order(force_create=1)
+        for product_id in product_ids:
+            value = order._cart_update(
+                product_id=product_id, line_id=line_id, add_qty=add_qty,
+                set_qty=set_qty)
+        value['cart_quantity'] = order.cart_quantity
+        value['website_sale.total'] = request.website._render(
+            "website_sale.total", {
+                'website_sale_order': request.website.sale_get_order()
+            })
+        return value
