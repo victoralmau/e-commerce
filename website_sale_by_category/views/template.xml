@@ -3,14 +3,8 @@
 <data>
 
 <template id="nav_by_category" name="Website Category Navigation">
-        <div class="row mt16 mb16">
-            <div class="col-md-12">
-                <h3>Categories</h3>
-                <hr/>
-            </div>
-        </div>
-        <div class="row mb16 text-center" t-if="c.child_id">
-            <div class="col-md-3" t-foreach="c.child_id" t-as="cat">
+        <div class="row mb16 text-center" t-if="category.child_id">
+            <div class="col-md-3" t-foreach="category.child_id" t-as="cat">
                 <a t-att-href="keep('/shop/category/' + slug(cat), category=0)">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -30,7 +24,6 @@
                 </a>
             </div>
         </div>
-        <hr/>
 </template>
 
 <template id="nav_by_category_root" name="Website Category Navigation">
@@ -64,25 +57,12 @@
             </t>
         </t>
         <t t-if="category">
-            Category: <span t-esc="category.name"/>
-            <t t-foreach="category.child_id" t-as="c">
-                  <t t-call="website_sale_by_category.nav_by_category"/>
-            </t>
+            <t t-call="website_sale_by_category.category_breadcrumb"/>
+            <h3><span t-esc="category.name"></span></h3>
+            <t t-call="website_sale_by_category.nav_by_category"/>
         </t>
         <hr/>
 </template>
-
-<template id="categories_recursive" name="Category list">
-  <li t-att-class="'active' if c.id == int(category or 0) else ''">
-      <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name"></a>
-      <ul t-if="c.child_id" class="nav nav-pills nav-stacked nav-hierarchy">
-          <t t-foreach="c.child_id" t-as="c">
-              <t t-call="website_sale.categories_recursive"/>
-          </t>
-      </ul>
-  </li>
-</template>
-
 
 <template id="website_sale.products_categories" inherit_id="website_sale.products" active="False"
           customize_show="True" name="Product Categories">
@@ -90,6 +70,35 @@
             <t t-call="website_sale_by_category.nav_by_category_root"/>
     </xpath>
 </template>
+
+<template id="categories_recursive" name="Category Breadcrumb">
+      <li t-att-class="'active' if c.id == int(category or 0) else ''">
+            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name"></a>
+      </li>
+    <li t-if="c.parent_id">
+
+      <t t-foreach="category.parent_id" t-as="c">
+          <t t-call="website_sale_by_category.categories_recursive"/>
+      </t>
+  </li>
+  <!--<span t-if="c.id == int(category or 0)" t-esc="c.name"/>-->
+</template>
+
+<template id="category_breadcrumb" name="Product Supplier Breadcrumb">
+    <div class="row">
+        <div class="col-md-6">
+            <ul id="category_breadcrumb" class="breadcrumb">
+                <li><a href="/shop">All Products</a></li>
+                <t t-if="category">
+                    <t t-call="website_sale_by_category.categories_recursive">
+                        <t t-set="c" t-value="category"/>
+                    </t>
+                </t>
+            </ul>
+        </div>
+    </div>
+</template>
+
 
 </data>
 </openerp>
