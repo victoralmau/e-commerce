@@ -14,7 +14,6 @@
                                                         "class": "",
                                                         "alt-field": "name"}'
                                 />
-
                             </div>
                         </div>
                         <div class="panel-footer">
@@ -45,7 +44,6 @@
                                                             "class": "",
                                                             "alt-field": "name"}'
                                     />
-
                                 </div>
                             </div>
                             <div class="panel-footer">
@@ -64,41 +62,41 @@
         <hr/>
 </template>
 
-<template id="website_sale.products_categories" inherit_id="website_sale.products" active="False"
-          customize_show="True" name="Product Categories">
+<template id="website_sale.products_categories"
+          inherit_id="website_sale.products" active="False" customize_show="True"
+          name="Product Categories">
     <xpath expr="//div[@id='products_grid']" position="before">
             <t t-call="website_sale_by_category.nav_by_category_root"/>
     </xpath>
 </template>
 
 <template id="categories_recursive" name="Category Breadcrumb">
-      <li t-att-class="'active' if c.id == int(category or 0) else ''">
-            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name"></a>
-      </li>
-    <li t-if="c.parent_id">
-
-      <t t-foreach="category.parent_id" t-as="c">
-          <t t-call="website_sale_by_category.categories_recursive"/>
-      </t>
-  </li>
-  <!--<span t-if="c.id == int(category or 0)" t-esc="c.name"/>-->
+    <t t-foreach="cat.parent_id" t-as="cat">
+        <t t-call="website_sale_by_category.categories_recursive"/>
+        <li>
+            <t t-if="cat != category">
+                <a t-att-href="keep('/shop/category/' + slug(cat), category=0)"
+                   t-field="cat.name"></a>
+            </t>
+        </li>
+    </t>
 </template>
 
-<template id="category_breadcrumb" name="Product Supplier Breadcrumb">
+<template id="category_breadcrumb">
     <div class="row">
         <div class="col-md-6">
             <ul id="category_breadcrumb" class="breadcrumb">
                 <li><a href="/shop">All Products</a></li>
                 <t t-if="category">
                     <t t-call="website_sale_by_category.categories_recursive">
-                        <t t-set="c" t-value="category"/>
+                        <t t-set="cat" t-value="category"/>
                     </t>
+                    <li><span t-esc="category.name"/></li>
                 </t>
             </ul>
         </div>
     </div>
 </template>
-
 
 </data>
 </openerp>
