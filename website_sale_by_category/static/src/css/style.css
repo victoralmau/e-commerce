@@ -1,3 +1,7 @@
-#image_category img {
+#image-category img {
     margin: 0 auto;
+}
+
+.category-breadcrumb {
+    float: left;
 }
