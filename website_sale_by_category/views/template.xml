@@ -3,10 +3,10 @@
 <data>
 
 <template id="category_body">
-    <a t-att-href="keep('/shop/category/' + slug(cat), category=0)">
+    <a class="" t-att-href="keep('/shop/category/' + slug(cat), category=0)">
         <div class="panel panel-default">
-            <div class="panel-body">
-                <div id="image-category">
+            <div class="panel-body panel-body-category">
+                <div id="image-category" class="content-center">
                     <span t-field="cat.image"
                           t-field-options='{"widget": "image",
                                             "class": "",
@@ -14,8 +14,8 @@
                     />
                 </div>
             </div>
-            <div class="panel-footer">
-                <span class="text-center" t-esc="cat.name"/>
+            <div class="panel-footer text-center">
+                <span t-esc="cat.name"/>
             </div>
         </div>
     </a>
@@ -23,31 +23,31 @@
 
 <template id="nav_by_category" name="Website Category Navigation">
         <div class="row mb16 text-center" t-if="category.child_id">
-            <div class="col-md-3" t-foreach="category.child_id" t-as="cat">
+            <div class="col-md-2" t-foreach="category.child_id" t-as="cat">
                 <t t-call="website_sale_by_category.category_body"/>
             </div>
         </div>
 </template>
 
 <template id="nav_by_category_root" name="Website Category Navigation">
-        <div class="row mt16 mb16">
-            <div class="col-md-12">
-                <h3>Categories</h3>
-                <hr/>
-            </div>
-        </div>
         <t t-if="not category">
+            <div class="row mt16 mb16">
+                <div class="col-md-12">
+                    <h3>Categories</h3>
+                    <hr/>
+                </div>
+            </div>
             <t t-foreach="categories" t-as="cat">
-                <div class="col-md-3" t-if="not cat.parent_id">
+                <div class="col-md-2" t-if="not cat.parent_id">
                     <t t-call="website_sale_by_category.category_body"/>
                 </div>
             </t>
         </t>
         <t t-if="category">
-
             <h3><span t-esc="category.name"></span></h3>
             <t t-call="website_sale_by_category.nav_by_category"/>
         </t>
+        <hr/>
 </template>
 
 <template id="website_sale.products_categories"
@@ -71,19 +71,15 @@
 </template>
 
 <template id="category_breadcrumb">
-    <!--<div class="row">-->
-        <div class="pagination col-md-3 category-breadcrumb">
-            <ul class="breadcrumb">
-                <li><a href="/shop">All Products</a></li>
-                <t t-if="category">
-                    <t t-call="website_sale_by_category.categories_recursive">
-                        <t t-set="cat" t-value="category"/>
-                    </t>
-                    <li><span t-esc="category.name"/></li>
-                </t>
-            </ul>
-        </div>
-    <!--</div>-->
+    <ol class="breadcrumb category-breadcrumb">
+        <li><a href="/shop">All Products</a></li>
+        <t t-if="category">
+            <t t-call="website_sale_by_category.categories_recursive">
+                <t t-set="cat" t-value="category"/>
+            </t>
+            <li><span t-esc="category.name"/></li>
+        </t>
+    </ol>
 </template>
 
 <template id="products" inherit_id="website_sale.products">

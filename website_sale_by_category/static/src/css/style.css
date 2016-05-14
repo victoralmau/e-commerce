@@ -1,7 +1,36 @@
+/* © 2016 Sergio Teruel<sergio.teruel@recnativa.com>
+ * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). */
+
 #image-category img {
     margin: 0 auto;
+    max-width: 100px;
 }
 
 .category-breadcrumb {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    height: 35px;
+}
+
+.category-breadcrumb > li {
+    margin-top: 6px;
+}
+
+.products_pager > div > ol{
+    padding-left: 4px;
+    padding-right: 4px;
     float: left;
+}
+
+.content-center{
+  line-height: 130px;
+  vertical-align: middle;
+  margin: 0px auto;
+  text-align: center;
+  max-width: 125px;
+}
+
+.panel-body-category{
+    height: 120px;
 }
