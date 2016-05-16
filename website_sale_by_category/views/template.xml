@@ -23,9 +23,12 @@
 
 <template id="nav_by_category" name="Website Category Navigation">
         <div class="row mb16 text-center" t-if="category.child_id">
-            <div class="col-md-2" t-foreach="category.child_id" t-as="cat">
-                <t t-call="website_sale_by_category.category_body"/>
-            </div>
+            <t t-foreach="category.child_id" t-as="cat">
+                <div class="row" t-if="cat_index % 6 == 0"/>
+                <div class="col-md-2">
+                    <t t-call="website_sale_by_category.category_body"/>
+                </div>
+            </t>
         </div>
 </template>
 
@@ -47,10 +50,10 @@
         </t>
 </template>
 
-<template id="website_sale.products_categories"
+<template id="products_categories_images"
           inherit_id="website_sale.products" active="False" customize_show="True"
-          name="Product Categories">
-    <xpath expr="//div[@id='products_grid']" position="before">
+          name="Product Categories Images">
+    <xpath expr="//div[@id='products_grid']/*[1]" position="before">
             <t t-call="website_sale_by_category.nav_by_category_root"/>
     </xpath>
 </template>
