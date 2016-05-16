@@ -2,3 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_product_website_pack_user,product.website.pack.user,model_product_website_pack,base.group_sale_salesman,1,1,1,1
 access_product_website_pack_line_user,product.website.pack.line.user,model_product_website_pack_line,base.group_sale_salesman,1,1,1,1
 access_product_website_pack_block_user,product.website.pack.block.user,model_product_website_pack_block,base.group_sale_salesman,1,1,1,1
+access_product_website_pack_public,product.website.pack.public,model_product_website_pack,,1,0,0,0
+access_product_website_pack_line_public,product.website.pack.line.public,model_product_website_pack_line,,1,0,0,0
+access_product_website_pack_block_public,product.website.pack.block.public,model_product_website_pack_block,,1,0,0,0

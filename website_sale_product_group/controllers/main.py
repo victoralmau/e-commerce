@@ -22,11 +22,15 @@ class WebsiteSale(website_sale):
             page=page, category=category, search=search, **post)
         if category:
             result.qcontext['product_packs'] = category.website_pack_ids
+            # result.qcontext['products'] -= category.website_pack_ids.mapped(
+            #     'line_ids.product_id.product_tmpl_id')
         else:
-            packs_ids = product_pack_obj.search(
-                cr, uid, [], context=context)
+            # packs_ids = product_pack_obj.search(
+            #     cr, uid, [], context=context)
+            # result.qcontext['product_packs'] = product_pack_obj.browse(
+            #     cr, uid, packs_ids, context=context)
             result.qcontext['product_packs'] = product_pack_obj.browse(
-                cr, uid, packs_ids, context=context)
+                cr, uid, [], context=context)
         return result
 
     @http.route(['/shop/cart/products_update_json'], type='json',

@@ -54,13 +54,15 @@
 </template>
 
 <template id="product_packs_view" inherit_id="website_sale.products" active="False" customize_show="True" name="Product Pack View">
-  <xpath expr="//div[@id='products_grid']" position="inside">
-    <t t-call="website_sale_product_group.total_selected_amount"/>
-    <t t-foreach="product_packs" t-as="product_pack">
-      <div class="oe_product oe_list oe_product_cart">
-        <t t-call="website_sale_product_group.product_pack_item"/>
+  <xpath expr="//div[@id='products_grid']/*[1]" position="after">
+      <div t-if="product_packs">
+          <t t-call="website_sale_product_group.total_selected_amount"/>
+          <t t-foreach="product_packs" t-as="product_pack">
+              <div class="oe_product oe_list oe_product_cart">
+                  <t t-call="website_sale_product_group.product_pack_item"/>
+              </div>
+          </t>
       </div>
-    </t>
   </xpath>
 </template>
 

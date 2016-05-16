@@ -28,6 +28,8 @@
     <field name="arch" type="xml">
         <field name="sequence" position="after">
             <field name="website_pack_ids" widget="many2many_tags"/>
+            <field name="website_description"/>
+            <field name="website_published" widget="website_button"/>
         </field>
     </field>
 </record>

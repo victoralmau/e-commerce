@@ -21,7 +21,7 @@
     <field name="model">product.website.pack.block</field>
     <field name="arch" type="xml">
         <tree string="Block">
-            <field name="sequence" invisible="1"/>
+            <field name="sequence" widget="handle"/>
             <field name="name"/>
         </tree>
     </field>
@@ -42,7 +42,7 @@
 </record>
 
 <record id="product_website_pack_block_action" model="ir.actions.act_window">
-    <field name="name">Product Website Pack Blocks</field>
+    <field name="name">Website Pack Blocks</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">product.website.pack.block</field>
     <field name="view_type">form</field>
@@ -109,7 +109,7 @@
 
 
 <record id="product_website_pack_action" model="ir.actions.act_window">
-    <field name="name">Product Website Packs</field>
+    <field name="name">Website Packs</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">product.website.pack</field>
     <field name="view_type">form</field>

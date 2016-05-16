@@ -7,7 +7,7 @@ from openerp import fields, models
 
 class ProductWebsitePackBlock(models.Model):
     _name = 'product.website.pack.block'
-    _order = 'sequence'
+    _order = 'sequence, id'
 
     name = fields.Char()
     sequence = fields.Integer()
@@ -15,7 +15,7 @@ class ProductWebsitePackBlock(models.Model):
 
 class ProductWebsitePack(models.Model):
     _name = 'product.website.pack'
-    _order = 'sequence'
+    _order = 'sequence, id'
 
     name = fields.Char()
     block = fields.Many2one(comodel_name='product.website.pack.block')
@@ -35,7 +35,7 @@ class ProductWebsitePack(models.Model):
 
 class ProductWebsitePackLine(models.Model):
     _name = 'product.website.pack.line'
-    _order = 'sequence'
+    _order = 'sequence, id'
     _rec_name = 'pack_id'
 
     pack_id = fields.Many2one(
