@@ -23,6 +23,3 @@ class ProductPublicCategory(models.Model):
         string='Website Packs',
         help="Those packs are used to group similar products for "
              "e-commerce.")
-    website_published = fields.Boolean('Available in the website', copy=False)
-    website_description = fields.Char(
-        'Description for the website', translate=True)

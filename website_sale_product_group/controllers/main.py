@@ -22,13 +22,7 @@ class WebsiteSale(website_sale):
             page=page, category=category, search=search, **post)
         if category:
             result.qcontext['product_packs'] = category.website_pack_ids
-            # result.qcontext['products'] -= category.website_pack_ids.mapped(
-            #     'line_ids.product_id.product_tmpl_id')
         else:
-            # packs_ids = product_pack_obj.search(
-            #     cr, uid, [], context=context)
-            # result.qcontext['product_packs'] = product_pack_obj.browse(
-            #     cr, uid, packs_ids, context=context)
             result.qcontext['product_packs'] = product_pack_obj.browse(
                 cr, uid, [], context=context)
         return result
@@ -48,3 +42,17 @@ class WebsiteSale(website_sale):
                 'website_sale_order': request.website.sale_get_order()
             })
         return value
+
+    def _get_search_domain(self, search, category, attrib_values):
+        domain = super(WebsiteSale, self)._get_search_domain(
+            search, category, attrib_values)
+        if category:
+            cr, uid, context = request.cr, request.uid, request.context
+            category_obj = request.registry['product.public.category']
+            category_ids = category_obj.search(
+                cr, uid, [('id', '=', int(category))], context=context)
+            categ = category_obj.browse(cr, uid, category_ids, context=context)
+            product_ids = categ.website_pack_ids.mapped(
+                'line_ids.product_id.product_tmpl_id.id')
+            domain.append(('id', 'not in', product_ids))
+        return domain
