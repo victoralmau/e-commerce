@@ -23,6 +23,11 @@
 </template>
 
 <template id="nav_by_category" name="Website Category Navigation">
+        <div class="row mb16" t-if="category.website_description">
+            <div class="col-md-12">
+                <span t-field="category.website_description"/>
+            </div>
+        </div>
         <div class="row mb16 text-center" t-if="category.child_id">
             <t t-foreach="category.child_id" t-as="cat">
                 <div class="row" t-if="cat_index % 6 == 0"/>
