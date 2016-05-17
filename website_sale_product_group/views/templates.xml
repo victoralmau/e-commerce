@@ -13,22 +13,23 @@
         <t t-foreach="product_pack.line_ids" t-as="pack_item">
             <div class="row mb8">
                 <div class="row">
-                    <div class="col-md-1">
+                    <div id="product_pack_check" class="col-md-1">
                         <input type="checkbox" class="chk_line"
                                t-att-data-lst_price="pack_item.product_id.lst_price"
                                t-att-data-product_id="pack_item.product_id.id"
                                t-att-checked="'checked' if pack_item.default_checked else None"/>
                     </div>
-                    <div class="col-md-9">
+                    <div id="product_pack_name" class="col-md-10">
                         <strong><span t-field="pack_item.product_id.name"/></strong>
                     </div>
-                    <div class="col-md-2 text-right">
+                    <div id="product_pack_price" class="col-md-1 text-right">
                         <span t-field="pack_item.product_id.lst_price"
                             t-field-options='{
                                "widget": "monetary",
                                "display_currency": "website.pricelist_id.currency_id"
                            }'/>
                         <input name="product_id" t-att-value="pack_item.product_id.id" type="hidden"/>
+                        <input name="pack_item" t-att-value="pack_item.id" type="hidden"/>
                     </div>
                 </div>
                 <div class="row">
