@@ -16,4 +16,6 @@ class WebsiteSale(website_sale):
             if orig_condition in domain:
                 pos = domain.index(orig_condition)
                 domain[pos] = ('public_categ_ids', '=', int(category))
+        else:
+            domain.append(('id', '=', 0))
         return domain

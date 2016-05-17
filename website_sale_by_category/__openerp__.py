@@ -20,5 +20,6 @@
         "views/assets.xml",
         "views/website_sale_by_category_view.xml",
         "views/template.xml",
+        "security/website_sale_by_category.xml",
     ],
 }
