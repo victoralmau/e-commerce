@@ -6,10 +6,11 @@
 from openerp import models, fields
 
 
-class WebsiteSaleShippingOptions(models.Model):
-    _name = 'shipping.options'
+class SaleOrder(models.Model):
+    _inherit = "sale.order"
 
-    name = fields.Char(required=True)
-    website_published = fields.Boolean(
-        string='Available in the website', copy=False)
+    shipping_option_ids = fields.Many2many(
+        comodel_name='shipping.options',
+        column1='order_id', column2='option_id',
+        string='Shipping Options')
 
