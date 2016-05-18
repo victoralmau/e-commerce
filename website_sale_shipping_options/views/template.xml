@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="category_body">
+    <a class="" t-att-href="keep('/shop/category/' + slug(cat), category=0)">
+        <div class="panel panel-default">
+            <div class="panel-body panel-body-category">
+                <div id="image-category" class="content-center">
+                    <span t-field="cat.image"
+                          t-field-options='{"widget": "image",
+                                            "class": "",
+                                            "alt-field": "name"}'
+                    />
+                </div>
+            </div>
+            <div class="panel-footer text-center">
+                <span t-field="cat.name"/>
+                <span t-field="cat.website_description"/>
+            </div>
+        </div>
+    </a>
+</template>
+
+<template id="nav_by_category" name="Website Category Navigation">
+        <div class="row mb16" t-if="category.website_description">
+            <div class="col-md-12">
+                <span t-field="category.website_description"/>
+            </div>
+        </div>
+        <div class="row mb16 text-center" t-if="category.child_id">
+            <t t-foreach="category.child_id" t-as="cat">
+                <div class="row" t-if="cat_index % 6 == 0"/>
+                <div class="col-md-2">
+                    <t t-call="website_sale_by_category.category_body"/>
+                </div>
+            </t>
+        </div>
+</template>
+
+<template id="nav_by_category_root" name="Website Category Navigation">
+        <t t-if="not category">
+            <div class="col-md-12">
+                <h3>Categories</h3>
+                <hr/>
+            </div>
+            <t t-foreach="categories" t-as="cat">
+                <div class="col-md-2" t-if="not cat.parent_id">
+                    <t t-call="website_sale_by_category.category_body"/>
+                </div>
+            </t>
+        </t>
+        <t t-if="category">
+            <h3><span t-esc="category.name"></span></h3>
+            <t t-call="website_sale_by_category.nav_by_category"/>
+        </t>
+</template>
+
+<template id="products_categories_images"
+          inherit_id="website_sale.products" active="False" customize_show="True"
+          name="Product Categories Images">
+    <xpath expr="//div[@id='products_grid']/*[1]" position="before">
+            <t t-call="website_sale_by_category.nav_by_category_root"/>
+    </xpath>
+</template>
+
+<template id="categories_recursive" name="Category Breadcrumb">
+    <t t-foreach="cat.parent_id" t-as="cat">
+        <t t-call="website_sale_by_category.categories_recursive"/>
+        <li>
+            <t t-if="cat != category">
+                <a t-att-href="keep('/shop/category/' + slug(cat), category=0)"
+                   t-field="cat.name"></a>
+            </t>
+        </li>
+    </t>
+</template>
+
+<template id="category_breadcrumb">
+    <ol class="breadcrumb category-breadcrumb">
+        <li><a href="/shop">All Products</a></li>
+        <t t-if="category">
+            <t t-call="website_sale_by_category.categories_recursive">
+                <t t-set="cat" t-value="category"/>
+            </t>
+            <li><span t-esc="category.name"/></li>
+        </t>
+    </ol>
+</template>
+
+<template id="products" inherit_id="website_sale.products">
+    <xpath expr="//t[@t-call='website_sale.search']" position="before">
+        <t t-call="website_sale_by_category.category_breadcrumb"/>
+    </xpath>
+</template>
+
+</data>
+</openerp>
