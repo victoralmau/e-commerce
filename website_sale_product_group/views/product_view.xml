@@ -26,9 +26,36 @@
     <field name="model">product.public.category</field>
     <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
     <field name="arch" type="xml">
-        <field name="sequence" position="after">
-            <field name="website_pack_ids" widget="many2many_tags"/>
-        </field>
+        <xpath expr="//field[@name='name']/../.." position="attributes">
+            <attribute name="class"></attribute>
+        </xpath>
+        <xpath expr="//field[@name='name']/../.." position="after">
+            <group string="Website Packs">
+                <field name="website_pack_ids" nolabel="1"
+                       context="{'default_public_categ_ids': [active_id]}">
+                    <tree string="Packs">
+                        <field name="sequence" widget="handle"/>
+                        <field name="block"/>
+                        <field name="line_ids" widget="one2many_tags">
+                        </field>
+                    </tree>
+                    <form string="Pack">
+                        <sheet>
+                            <group>
+                                <field name="block"/>
+                            </group>
+                            <field name="line_ids">
+                                <tree string="Products" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id"/>
+                                    <field name="default_checked"/>
+                                </tree>
+                            </field>
+                        </sheet>
+                    </form>
+                </field>
+            </group>
+        </xpath>
     </field>
 </record>
 

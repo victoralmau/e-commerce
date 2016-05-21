@@ -9,7 +9,8 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     website_pack_ids = fields.One2many(
-        comodel_name='product.website.pack.line', inverse_name='product_id')
+        comodel_name='product.website.pack.line', inverse_name='product_id',
+        string='Website Packs')
 
 
 class ProductPublicCategory(models.Model):

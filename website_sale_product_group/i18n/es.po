@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sale-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 12:35+0000\n"
-"PO-Revision-Date: 2016-04-20 14:38+0100\n"
-"Last-Translator: Carlos Dauden <carlos.dauden@tecnativa.com>\n"
+"POT-Creation-Date: 2016-05-21 18:30+0000\n"
+"PO-Revision-Date: 2016-05-21 20:31+0100\n"
+"Last-Translator: Carlos Incaser <carlos@incaser.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-sale-workflow-8-0/"
 "language/es/) <info@tecnativa.com>\n"
 "Language: es\n"
@@ -18,3 +18,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
+
+#. module: website_sale_product_group
+#: view:website:website_sale_product_group.total_selected_amount
+msgid "Add to cart"
+msgstr "Añadir al carro"
+
+#. module: website_sale_product_group
+#: field:product.public.category,website_published:0
+msgid "Available in the website"
+msgstr "Disponible en el sitio web"
+
+#. module: website_sale_product_group
+#: view:product.website.pack:website_sale_product_group.product_website_pack_search_view
+#: field:product.website.pack,block:0
+#: view:product.website.pack.block:website_sale_product_group.product_website_pack_block_form_view
+#: view:product.website.pack.block:website_sale_product_group.product_website_pack_block_search_view
+#: view:product.website.pack.block:website_sale_product_group.product_website_pack_block_tree_view
+msgid "Block"
+msgstr "Bloque"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,create_uid:0
+#: field:product.website.pack.block,create_uid:0
+#: field:product.website.pack.line,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,create_date:0
+#: field:product.website.pack.block,create_date:0
+#: field:product.website.pack.line,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: website_sale_product_group
+#: field:product.website.pack.line,default_checked:0
+msgid "Default checked"
+msgstr "Por defecto"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,name:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: website_sale_product_group
+#: field:product.public.category,website_description:0
+msgid "Description for the website"
+msgstr "Descripción para el sitio web"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,display_name:0
+#: field:product.website.pack.block,display_name:0
+#: field:product.website.pack.line,display_name:0
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: website_sale_product_group
+#: view:product.website.pack:website_sale_product_group.product_website_pack_search_view
+msgid "Group by..."
+msgstr "Agrupado por..."
+
+#. module: website_sale_product_group
+#: field:product.website.pack,id:0 field:product.website.pack.block,id:0
+#: field:product.website.pack.line,id:0
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,__last_update:0
+#: field:product.website.pack.block,__last_update:0
+#: field:product.website.pack.line,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,write_uid:0
+#: field:product.website.pack.block,write_uid:0
+#: field:product.website.pack.line,write_uid:0
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,write_date:0
+#: field:product.website.pack.block,write_date:0
+#: field:product.website.pack.line,write_date:0
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: website_sale_product_group
+#: field:product.website.pack.block,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: website_sale_product_group
+#: view:product.public.category:website_sale_product_group.product_public_category_pack_form_view
+#: view:product.website.pack:website_sale_product_group.product_website_pack_form_view
+#: view:product.website.pack:website_sale_product_group.product_website_pack_search_view
+msgid "Pack"
+msgstr "Paquete"
+
+#. module: website_sale_product_group
+#: view:product.public.category:website_sale_product_group.product_public_category_pack_form_view
+#: view:product.website.pack:website_sale_product_group.product_website_pack_tree_view
+msgid "Packs"
+msgstr "Paquetes"
+
+#. module: website_sale_product_group
+#: model:ir.model,name:website_sale_product_group.model_product_product
+#: field:product.website.pack.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: website_sale_product_group
+#: field:product.website.pack.line,pack_id:0
+msgid "Product Pack"
+msgstr "Paquete de productos"
+
+#. module: website_sale_product_group
+#: view:product.public.category:website_sale_product_group.product_public_category_pack_form_view
+#: view:product.website.pack:website_sale_product_group.product_website_pack_form_view
+#: field:product.website.pack,line_ids:0
+msgid "Products"
+msgstr "Productos"
+
+#. module: website_sale_product_group
+#: model:ir.model,name:website_sale_product_group.model_product_public_category
+#: field:product.website.pack,public_categ_ids:0
+msgid "Public Category"
+msgstr "Categoría pública"
+
+#. module: website_sale_product_group
+#: field:product.website.pack,sequence:0
+#: field:product.website.pack.line,sequence:0
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: website_sale_product_group
+#: help:product.public.category,website_pack_ids:0
+msgid "Those packs are used to group similar products for e-commerce."
+msgstr ""
+"Estos paquetes se usan para agrupar productos similares para el comercio "
+"electrónico."
+
+#. module: website_sale_product_group
+#: view:website:website_sale_product_group.total_selected_amount
+msgid "Total Of Your Selection:"
+msgstr "Total de tu selección:"
+
+#. module: website_sale_product_group
+#: model:ir.actions.act_window,name:website_sale_product_group.product_website_pack_block_action
+msgid "Website Pack Blocks"
+msgstr "Bloques de paquete en web"
+
+#. module: website_sale_product_group
+#: model:ir.actions.act_window,name:website_sale_product_group.product_website_pack_action
+#: view:product.product:website_sale_product_group.product_normal_website_pack_form_view
+#: field:product.product,website_pack_ids:0
+#: view:product.public.category:website_sale_product_group.product_public_category_pack_form_view
+#: field:product.public.category,website_pack_ids:0
+msgid "Website Packs"
+msgstr "Paquetes en web"
