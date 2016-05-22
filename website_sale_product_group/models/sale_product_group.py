@@ -38,7 +38,8 @@ class ProductWebsitePackLine(models.Model):
         comodel_name='product.website.pack', ondelete='cascade',
         string='Product Pack')
     product_id = fields.Many2one(
-        comodel_name='product.product', ondelete='restrict', string='Product')
+        comodel_name='product.product', ondelete='restrict', required=True,
+        string='Product')
     default_checked = fields.Boolean()
     sequence = fields.Integer()
 
