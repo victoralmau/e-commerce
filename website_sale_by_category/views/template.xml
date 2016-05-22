@@ -4,7 +4,7 @@
 
 <template id="category_body">
     <a class="" t-att-href="keep('/shop/category/' + slug(cat), category=0)">
-        <div class="panel panel-default">
+        <div id="category_panel" class="panel panel-default">
             <div class="panel-body panel-body-category">
                 <div id="image-category" class="content-center">
                     <span t-field="cat.image"
@@ -14,12 +14,16 @@
                     />
                 </div>
             </div>
-            <div class="panel-footer text-center">
-                <span t-field="cat.name"/>
-                <span t-field="cat.website_description"/>
-            </div>
         </div>
     </a>
+</template>
+
+<template id="category_name" inherit_id="website_sale_by_category.category_body" active="True" customize_show="True" name="Show category name">
+  <xpath expr="//div[@id='category_panel']" position="inside">
+      <div class="panel-footer text-center">
+          <span t-field="cat.name"/>
+      </div>
+  </xpath>
 </template>
 
 <template id="nav_by_category" name="Website Category Navigation">
