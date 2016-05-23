@@ -21,7 +21,8 @@ class WebsiteSale(website_sale):
         result = super(WebsiteSale, self).shop(
             page=page, category=category, search=search, **post)
         if category:
-            result.qcontext['product_packs'] = category.website_pack_ids
+            result.qcontext['product_packs'] = (
+                category.with_context(context).website_pack_ids)
         else:
             result.qcontext['product_packs'] = product_pack_obj.browse(
                 cr, uid, [], context=context)
