@@ -7,15 +7,19 @@
     var website = openerp.website;
 
     $(document).ready(function () {
-        $( ".chk_line" ).change(function () {
-            var amount = 0.0;
-            $( ".chk_line:checked" ).each(function() {
-                amount += parseFloat($(this).data('lst_price'));
-            });
-            $("#total_selected").text(amount.toFixed(2).toString() +' €');
-          }).change();
+        $( ".chk_line" ).change(calculate_total).change();
         $('#add_to_cart').click(add_to_cart_group);
     });
+
+    function calculate_total(){
+        debugger
+        var amount = 0.0;
+        $( ".chk_line:checked" ).each(function() {
+            amount += parseFloat($(this).data('lst_price')) * parseFloat($(this).data('unit'));
+        });
+
+        $("#total_selected").text(amount.toFixed(2).toString() +' €');
+    };
 
     function add_to_cart_group(ev){
         ev.preventDefault();
