@@ -29,9 +29,13 @@ class WebsiteSale(website_sale):
         return get_pricelist()
 
     @http.route(
-        ['/shop/code/<pricelist_code>'], type='http', auth="public",
-        website=True)
-    def promotional_code_pricelist(self, pricelist_code, **post):
+        ['/shop/code/<pricelist_code>',
+         '/shop/code/<pricelist_code>/category/<category_slug>'],
+        type='http', auth="public", website=True)
+    def promotional_code_pricelist(
+            self, pricelist_code, category_slug=None, **post):
         request.website.sale_get_order(
             code=pricelist_code, context=request.context)
-        return request.redirect("/shop")
+        url_redirect = (
+            category_slug and "/shop/category/" + category_slug or "/shop")
+        return request.redirect(url_redirect)
