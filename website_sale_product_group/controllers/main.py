@@ -32,16 +32,16 @@ class WebsiteSale(website_sale):
                 auth="public", methods=['POST'], website=True)
     def cart_products_update_json(
             self, product_ids, line_id, add_qty=None, set_qty=None):
-        order = request.website.sale_get_order()
+        order = request.website.sale_get_order(force_create=1)
         value = {}
-        for product_id in product_ids:
+        for element in product_ids:
             value = order._cart_update(
-                product_id=product_id, line_id=line_id, add_qty=add_qty,
-                set_qty=set_qty)
+                product_id=element['product_id'], line_id=line_id,
+                add_qty=add_qty, set_qty=float(element['qty']))
         value['cart_quantity'] = order.cart_quantity
         value['website_sale.total'] = request.website._render(
             "website_sale.total", {
-                'website_sale_order': request.website.sale_get_order()
+                'website_sale_order': order
             })
         return value
 
