@@ -14,7 +14,7 @@
             <div class="row mb8">
                 <div class="row">
                     <div id="product_pack_check" class="col-md-1">
-                        <input type="checkbox" class="chk_line"
+                        <input type="checkbox" class="chk_line js_productCheck"
                                t-att-data-unit="1.0"
                                t-att-data-lst_price="pack_item.product_id.lst_price"
                                t-att-data-product_id="pack_item.product_id.id"
