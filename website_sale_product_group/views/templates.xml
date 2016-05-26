@@ -25,6 +25,8 @@
                                t-att-data-unit="1.0"
                                t-att-data-price="pack_item.product_id.price"
                                t-att-data-product_id="pack_item.product_id.id"
+                               t-att-data-pack_item_id="pack_item.id"
+                               t-att-data-public_categ_id="categories[:1].id"
                                t-att-checked="'checked' if pack_item.default_checked else None"/>
                         <strong><span t-field="pack_item.product_id.name"/></strong>
                     </div>
@@ -84,6 +86,34 @@
           </t>
       </div>
   </xpath>
+</template>
+
+<!-- /shop/cart -->
+<template id="cart" inherit_id="website_sale.cart">
+
+    <xpath expr="//t[@t-foreach='website_sale_order.website_order_line']" position="before">
+        <t t-set="init_block" t-value="False"/>
+    </xpath>
+
+    <xpath expr="//t[@t-foreach='website_sale_order.website_order_line']/tr" position="before">
+        <t t-set="block" t-value="line.product_id.website_pack_ids[:1].pack_id.block"/>
+        <tr t-if="init_block &lt;&gt; block">
+            <td colspan="5" class="block-separator">
+                <t t-if="line.product_id.website_pack_ids">
+                    <h5>
+                        <span t-field="line.product_id.website_pack_ids[:1].pack_id.public_categ_ids[:1].parent_id.name"/>
+                        <span t-field="line.product_id.website_pack_ids[:1].pack_id.public_categ_ids[:1].name"/>
+                        <span t-field="line.product_id.website_pack_ids[:1].pack_id.block"/>
+                    </h5>
+                </t>
+                <t t-if="not line.product_id.website_pack_ids">
+                    <h5>SINGLES</h5>
+                </t>
+            </td>
+            <t t-set="init_block" t-value="block"/>
+        </tr>
+    </xpath>
+
 </template>
 
 </data>

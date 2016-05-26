@@ -62,7 +62,7 @@
             var product_ids = new Array();
             $( ".chk_line:checked" ).each(function() {
                 var $check = $(this);
-                product_ids.push({'product_id': $check.data('product_id'),'qty': $check.data('unit')})
+                product_ids.push({'product_id': $check.data('product_id'),'qty': $check.data('unit'), 'pack_item_id': $check.data('pack_item_id'), public_categ_id': $check.data('public_categ_id')})
             });
             return product_ids;
         }
