@@ -34,10 +34,25 @@ class WebsiteSale(website_sale):
             self, product_ids, line_id, add_qty=None, set_qty=None):
         order = request.website.sale_get_order(force_create=1)
         value = {}
-        for element in product_ids:
+        product_wrap = {}
+        product_list = []
+        for line in product_ids:
+            if 'wrap_product' in line:
+                if product_wrap:
+                    product_wrap['qty'] += line['qty']
+                else:
+                    product_wrap = line
+            else:
+                product_list.append(line)
+        for element in product_list:
             value = order._cart_update(
                 product_id=element['product_id'], line_id=line_id,
-                add_qty=add_qty, set_qty=float(element['qty']))
+                add_qty=float(element['qty']), set_qty=None)
+        if product_wrap:
+            value = order._cart_update(
+                product_id=product_wrap['product_id'], line_id=line_id,
+                add_qty=float(product_wrap['qty']), set_qty=None)
+
         value['cart_quantity'] = order.cart_quantity
         value['website_sale.total'] = request.website._render(
             "website_sale.total", {

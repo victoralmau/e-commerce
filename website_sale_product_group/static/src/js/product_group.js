@@ -35,7 +35,7 @@
             var self = this;
             var amount = 0.0;
             $( ".chk_line:checked" ).each(function() {
-                amount += parseFloat($(this).data('lst_price')) * parseFloat($(this).data('unit'));
+                amount += parseFloat($(this).data('price')) * parseFloat($(this).data('unit'));
             });
             return amount;
         },

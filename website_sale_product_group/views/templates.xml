@@ -23,7 +23,7 @@
                     <div id="product_pack_name" class="col-md-10">
                         <input type="checkbox" class="chk_line js_productCheck"
                                t-att-data-unit="1.0"
-                               t-att-data-lst_price="pack_item.product_id.lst_price"
+                               t-att-data-price="pack_item.product_id.price"
                                t-att-data-product_id="pack_item.product_id.id"
                                t-att-checked="'checked' if pack_item.default_checked else None"/>
                         <strong><span t-field="pack_item.product_id.name"/></strong>
