@@ -45,8 +45,8 @@ class ProductWebsitePackLine(models.Model):
 
     @api.multi
     def name_get(self):
-        return {
-            line.id: '%s%s' % (
+        return [
+            (line.id, '%s%s' % (
                 line.default_checked and '*' or '',
-                line.product_id.name)
-            for line in self}
+                line.product_id.name))
+            for line in self]

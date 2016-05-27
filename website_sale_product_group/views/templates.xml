@@ -26,7 +26,7 @@
                                t-att-data-price="pack_item.product_id.price"
                                t-att-data-product_id="pack_item.product_id.id"
                                t-att-data-pack_item_id="pack_item.id"
-                               t-att-data-public_categ_id="categories[:1].id"
+                               t-att-data-public_categ_id="category.id"
                                t-att-checked="'checked' if pack_item.default_checked else None"/>
                         <strong><span t-field="pack_item.product_id.name"/></strong>
                     </div>

@@ -14,6 +14,7 @@ class Website(models.Model):
         res = super(Website, self).sale_get_order(
             force_create, code, update_pricelist)
         # re-order sale order lines
-        res.order_line.sorted(
-            lambda x: x.product_id.website_pack_ids[:1].pack_id.id)
+        if res:
+            res.order_line.sorted(
+                lambda x: (x.pack_item_id.sequence, x.pack_item_id.id))
         return res

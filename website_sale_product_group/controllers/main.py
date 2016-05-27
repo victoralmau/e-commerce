@@ -33,32 +33,20 @@ class WebsiteSale(website_sale):
     def cart_products_update_json(
             self, product_ids, line_id, add_qty=None, set_qty=None):
         order = request.website.sale_get_order(force_create=1)
-        value = {}
-        product_wrap = {}
-        product_list = []
-        for line in product_ids:
-            if 'wrap_product' in line:
-                if product_wrap:
-                    product_wrap['qty'] += line['qty']
-                else:
-                    product_wrap = line
-            else:
-                product_list.append(line)
-        for element in product_list:
-            value = order._cart_update(
-                product_id=element['product_id'], line_id=line_id,
-                add_qty=float(element['qty']), set_qty=None)
-        if product_wrap:
-            value = order._cart_update(
-                product_id=product_wrap['product_id'], line_id=line_id,
-                add_qty=float(product_wrap['qty']), set_qty=None)
-
-        value['cart_quantity'] = order.cart_quantity
-        value['website_sale.total'] = request.website._render(
+        values = {}
+        for item in product_ids:
+            values = order.with_context(
+                public_categ_id=item.get('public_categ_id', False),
+                pack_item_id=item.get('pack_item_id', False),
+            )._cart_update(
+                product_id=item['product_id'], line_id=line_id,
+                add_qty=float(item['qty']), set_qty=None)
+        values['cart_quantity'] = order.cart_quantity
+        values['website_sale.total'] = request.website._render(
             "website_sale.total", {
                 'website_sale_order': order
             })
-        return value
+        return values
 
     def _get_search_domain(self, search, category, attrib_values):
         domain = super(WebsiteSale, self)._get_search_domain(
