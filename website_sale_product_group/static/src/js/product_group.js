@@ -21,7 +21,6 @@
             this.$el.find('form input:checkbox').on('change', function (event) {
                     self.on_change();
                 });
-            this.render_total();
         },
         stop: function () {
         },
@@ -85,7 +84,9 @@
         }
     });
 
+
     $(document).ready(function () {
-        new openerp.website.productpack.Pack(this);
+        var content = new openerp.website.productpack.Pack(this);
+        content.render_total();
     });
 })();
