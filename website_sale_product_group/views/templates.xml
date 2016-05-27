@@ -24,6 +24,7 @@
                         <input type="checkbox" class="chk_line js_productCheck"
                                t-att-data-unit="1.0"
                                t-att-data-price="pack_item.product_id.price"
+                               t-att-data-lst_price="pack_item.product_id.lst_price"
                                t-att-data-product_id="pack_item.product_id.id"
                                t-att-data-pack_item_id="pack_item.id"
                                t-att-data-public_categ_id="category.id"
@@ -66,7 +67,8 @@
 <template id="total_selected_amount">
     <div class="row text-right">
         <div class="pull-right mb16">
-            <h5>Total Of Your Selection: <span id="total_selected"/></h5>
+            <h5>Total Of Your Selection: <span id="total_selected_price"/></h5>
+            <h5>Total Of Your Selection: <span id="total_selected_lst_price"/></h5>
             <button id="add_to_cart"
                     class="btn btn-primary btn-md a-submit"
                     type="submit"

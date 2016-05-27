@@ -21,7 +21,7 @@
             this.$el.find('form input:checkbox').on('change', function (event) {
                     self.on_change();
                 });
-            $("#total_selected").text(self.calculate_total().toFixed(2).toString() +' €');
+            this.render_total();
         },
         stop: function () {
         },
@@ -29,15 +29,27 @@
             this.add_to_cart_group();
         },
         on_change: function(){
-            $("#total_selected").text(this.calculate_total().toFixed(2).toString() +' €');
+            this.render_total();
         },
         calculate_total: function(){
             var self = this;
-            var amount = 0.0;
+            var total_dic = {};
+            var total_price = 0.0;
+            var total_lst_price = 0.0;
             $( ".chk_line:checked" ).each(function() {
-                amount += parseFloat($(this).data('price')) * parseFloat($(this).data('unit'));
+                total_price += parseFloat($(this).data('price')) * parseFloat($(this).data('unit'));
+                total_lst_price += parseFloat($(this).data('lst_price')) * parseFloat($(this).data('unit'));
             });
-            return amount;
+            total_dic = {
+                'total_price': total_price,
+                'total_lst_price': total_lst_price,
+            }
+            return total_dic;
+        },
+        render_total: function (){
+            var total_dic = this.calculate_total();
+            $("#total_selected_price").text(total_dic['total_price'].toFixed(2).toString() +' €');
+            $("#total_selected_lst_price").text(total_dic['total_lst_price'].toFixed(2).toString() +' €');
         },
         add_to_cart_group: function (){
             var product_ids = [];
