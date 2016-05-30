@@ -4,6 +4,8 @@
 (function () {
     'use strict';
     var website = openerp.website;
+    var qweb = openerp.qweb;
+    website.add_template_file('/website_sale_product_group/static/src/xml/product_group.xml');
 
     openerp.website.productpack = {};
     openerp.website.productpack.Pack = openerp.Widget.extend({
@@ -51,22 +53,38 @@
             $("#total_selected_lst_price").text(total_dic['total_lst_price'].toFixed(2).toString() +' €');
         },
         add_to_cart_group: function (){
+            var self = this;
             var product_ids = [];
             product_ids = this.selected_lines();
-            openerp.jsonRpc("/shop/cart/products_update_json", 'call', {
-                'line_id': null,
-                'product_ids': product_ids,
-                'set_qty': 1})
-                .then(function (data) {
-                    if (!data.quantity) {
-                        location.reload(true);
-                        return;
-                    }
-                    var $q = $(".my_cart_quantity");
-                    $q.parent().parent().removeClass("hidden", !data.quantity);
-                    $q.html(data.cart_quantity).hide().fadeIn(600);
-                    $("#cart_total").replaceWith(data['website_sale.total']);
-                });
+            if (product_ids.length > 0) {
+                this.show_popup();
+                openerp.jsonRpc("/shop/cart/products_update_json", 'call', {
+                    'line_id': null,
+                    'product_ids': product_ids,
+                    'set_qty': 1})
+                    .then(function (data) {
+                        if (!data.quantity) {
+                            location.reload(true);
+                            return;
+                        }
+                        var $q = $(".my_cart_quantity");
+                        $q.parent().parent().removeClass("hidden", !data.quantity);
+                        $q.html(data.cart_quantity).hide().fadeIn(600);
+                        $("#cart_total").replaceWith(data['website_sale.total']);
+                        self.hide_popup();
+                    });
+            };
+        },
+        show_popup: function(){
+            $(".oe_product_cart").prepend(qweb.render('popupcart',{}));
+            $('#popup').fadeIn('slow');
+            $('.popup-overlay').fadeIn('slow');
+            $('.popup-overlay').height($(window).height());
+        },
+        hide_popup: function(){
+            $('#popup').fadeOut('slow');
+            $('.popup-overlay').fadeOut('slow');
+            $("#popup").remove();
         },
         selected_lines: function (){
             var self = this;

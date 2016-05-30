@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sale-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-21 18:30+0000\n"
-"PO-Revision-Date: 2016-05-21 20:31+0100\n"
-"Last-Translator: Carlos Incaser <carlos@incaser.es>\n"
+"POT-Creation-Date: 2016-05-30 20:59+0000\n"
+"PO-Revision-Date: 2016-05-30 23:01+0100\n"
+"Last-Translator: Sergio Teruel <sergio.teruel@tecnativa.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-sale-workflow-8-0/"
 "language/es/) <info@tecnativa.com>\n"
 "Language: es\n"
@@ -20,9 +20,21 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: website_sale_product_group
+#: view:website:website_sale_product_group.product_pack_item
+msgid "&nbsp;"
+msgstr ""
+
+#. module: website_sale_product_group
 #: view:website:website_sale_product_group.total_selected_amount
 msgid "Add to cart"
 msgstr "Añadir al carro"
+
+#. module: website_sale_product_group
+#. openerp-web
+#: code:addons/website_sale_product_group/static/src/xml/product_group.xml:9
+#, python-format
+msgid "Adding products to cart"
+msgstr "Añadiendo productos a la cesta"
 
 #. module: website_sale_product_group
 #: field:product.public.category,website_published:0
@@ -119,10 +131,22 @@ msgid "Pack"
 msgstr "Paquete"
 
 #. module: website_sale_product_group
+#: field:sale.order.line,pack_item_id:0
+msgid "Pack Item"
+msgstr "Paquete"
+
+#. module: website_sale_product_group
 #: view:product.public.category:website_sale_product_group.product_public_category_pack_form_view
 #: view:product.website.pack:website_sale_product_group.product_website_pack_tree_view
 msgid "Packs"
 msgstr "Paquetes"
+
+#. module: website_sale_product_group
+#. openerp-web
+#: code:addons/website_sale_product_group/static/src/xml/product_group.xml:10
+#, python-format
+msgid "Please wait..."
+msgstr "Por favor, espere..."
 
 #. module: website_sale_product_group
 #: model:ir.model,name:website_sale_product_group.model_product_product
@@ -145,8 +169,24 @@ msgstr "Productos"
 #. module: website_sale_product_group
 #: model:ir.model,name:website_sale_product_group.model_product_public_category
 #: field:product.website.pack,public_categ_ids:0
+#: field:sale.order.line,public_categ_id:0
 msgid "Public Category"
 msgstr "Categoría pública"
+
+#. module: website_sale_product_group
+#: view:website:website_sale.cart
+msgid "SINGLES"
+msgstr ""
+
+#. module: website_sale_product_group
+#: model:ir.model,name:website_sale_product_group.model_sale_order
+msgid "Sales Order"
+msgstr "Pedidos"
+
+#. module: website_sale_product_group
+#: model:ir.model,name:website_sale_product_group.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Líneas de pedido"
 
 #. module: website_sale_product_group
 #: field:product.website.pack,sequence:0

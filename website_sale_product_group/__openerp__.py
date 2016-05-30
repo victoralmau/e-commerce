@@ -21,6 +21,7 @@
         'views/assets.xml',
         'security/ir.model.access.csv',
     ],
+    'qweb': ['static/src/xml/*.xml'],
     'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
     'website': 'http://www.tecnativa.com',

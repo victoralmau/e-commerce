@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="website_sale_product_group_templates" xml:space="preserve">
+
+<t t-name="popupcart">
+    <div id="popup" style="display: none;">
+        <div class="content-popup">
+            <div class="text-center">
+                <h2>Adding products to cart</h2>
+                <h3>Please wait...</h3>
+                <i class="fa fa-spinner fa-spin fa-5x"></i>
+            </div>
+        </div>
+    </div>
+</t>
+
+</templates>

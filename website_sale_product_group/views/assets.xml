@@ -8,6 +8,8 @@
           priority="20">
     <xpath expr="." position="inside">
         <script type="text/javascript" src="/website_sale_product_group/static/src/js/product_group.js"></script>
+        <link rel="stylesheet" href="/website_sale_product_group/static/src/css/style.css"/>
+
     </xpath>
 </template>
 
