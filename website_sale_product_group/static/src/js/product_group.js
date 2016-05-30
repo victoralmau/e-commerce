@@ -21,7 +21,7 @@
                     self.on_click();
                 });
             this.$el.find('form input:checkbox').on('change', function (event) {
-                    self.on_change();
+                    self.on_change(event);
                 });
         },
         stop: function () {
@@ -29,7 +29,7 @@
         on_click: function(){
             this.add_to_cart_group();
         },
-        on_change: function(){
+        on_change: function(event){
             this.render_total();
         },
         calculate_total: function(){
