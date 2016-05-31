@@ -13,15 +13,8 @@
         <t t-foreach="product_pack.line_ids" t-as="pack_item">
             <div class="row mb8">
                 <div class="row">
-                    <!--<div id="product_pack_check" class="col-md-1">-->
-                        <!--<input type="checkbox" class="chk_line js_productCheck"-->
-                               <!--t-att-data-unit="1.0"-->
-                               <!--t-att-data-lst_price="pack_item.product_id.lst_price"-->
-                               <!--t-att-data-product_id="pack_item.product_id.id"-->
-                               <!--t-att-checked="'checked' if pack_item.default_checked else None"/>-->
-                    <!--</div>-->
                     <div id="product_pack_name" class="col-md-10">
-                        <input type="checkbox" class="chk_line js_productCheck"
+                        <input type="checkbox" id="product_check" class="chk_line js_productCheck checkbox-info"
                                t-att-data-unit="1.0"
                                t-att-data-price="pack_item.product_id.price"
                                t-att-data-lst_price="pack_item.product_id.lst_price"
