@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sale-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-30 20:59+0000\n"
-"PO-Revision-Date: 2016-05-30 23:01+0100\n"
-"Last-Translator: Sergio Teruel <sergio.teruel@tecnativa.com>\n"
+"POT-Creation-Date: 2016-05-31 23:03+0000\n"
+"PO-Revision-Date: 2016-06-01 01:07+0100\n"
+"Last-Translator: Carlos Incaser <carlos@incaser.es>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-sale-workflow-8-0/"
 "language/es/) <info@tecnativa.com>\n"
 "Language: es\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. module: website_sale_product_group
 #: view:website:website_sale_product_group.product_pack_item
 msgid "&nbsp;"
-msgstr ""
+msgstr "&nbsp;"
 
 #. module: website_sale_product_group
 #: view:website:website_sale_product_group.total_selected_amount
@@ -174,9 +174,9 @@ msgid "Public Category"
 msgstr "Categoría pública"
 
 #. module: website_sale_product_group
-#: view:website:website_sale.cart
+#: view:website:website_sale.cart view:website:website_sale.payment
 msgid "SINGLES"
-msgstr ""
+msgstr "FUERA DE PAQUETE"
 
 #. module: website_sale_product_group
 #: model:ir.model,name:website_sale_product_group.model_sale_order
@@ -203,7 +203,12 @@ msgstr ""
 
 #. module: website_sale_product_group
 #: view:website:website_sale_product_group.total_selected_amount
-msgid "Total Of Your Selection:"
+msgid "Total of your selection without discount:"
+msgstr "Total de tu selección sin descuento:"
+
+#. module: website_sale_product_group
+#: view:website:website_sale_product_group.total_selected_amount
+msgid "Total of your selection:"
 msgstr "Total de tu selección:"
 
 #. module: website_sale_product_group
