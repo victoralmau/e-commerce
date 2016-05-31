@@ -6,9 +6,8 @@
 
 <template id="product_pack_item" name="Product pack item">
     <form id="update_cart" action="/shop/cart/update" method="post">
-        <div class="row mb16">
+        <div class="row mb16 block-separator">
             <h4 t-field="product_pack.block.name"/>
-            <hr/>
         </div>
         <t t-foreach="product_pack.line_ids" t-as="pack_item">
             <div class="row mb8">
@@ -91,17 +90,17 @@
     </xpath>
 
     <xpath expr="//t[@t-foreach='website_sale_order.website_order_line']/tr" position="before">
-        <t t-set="block" t-value="line.product_id.website_pack_ids[:1].pack_id.block"/>
+        <t t-set="block" t-value="line.pack_item_id.pack_id.block"/>
         <tr t-if="init_block &lt;&gt; block">
             <td colspan="5" class="block-separator">
-                <t t-if="line.product_id.website_pack_ids">
+                <t t-if="line.pack_item_id">
                     <h5>
-                        <span t-field="line.product_id.website_pack_ids[:1].pack_id.public_categ_ids[:1].parent_id.name"/>
-                        <span t-field="line.product_id.website_pack_ids[:1].pack_id.public_categ_ids[:1].name"/>
-                        <span t-field="line.product_id.website_pack_ids[:1].pack_id.block"/>
+                        <span t-field="line.public_categ_id.parent_id.name"/>
+                        <span t-field="line.public_categ_id.name"/>
+                        <span t-field="line.pack_item_id.pack_id.block"/>
                     </h5>
                 </t>
-                <t t-if="not line.product_id.website_pack_ids">
+                <t t-if="not line.pack_item_id">
                     <h5>SINGLES</h5>
                 </t>
             </td>
@@ -119,18 +118,18 @@
     </xpath>
 
     <xpath expr="//tr[@t-foreach='website_sale_order.website_order_line']/td" position="before">
-        <t t-set="block" t-value="line.product_id.website_pack_ids[:1].pack_id.block"/>
+        <t t-set="block" t-value="line.pack_item_id.pack_id.block"/>
         <t t-if="init_block &lt;&gt; block">
             <tr>
                 <td colspan="5" class="block-separator">
-                    <t t-if="line.product_id.website_pack_ids">
+                    <t t-if="line.pack_item_id">
                         <h5>
-                            <span t-field="line.product_id.website_pack_ids[:1].pack_id.public_categ_ids[:1].parent_id.name"/>
-                            <span t-field="line.product_id.website_pack_ids[:1].pack_id.public_categ_ids[:1].name"/>
-                            <span t-field="line.product_id.website_pack_ids[:1].pack_id.block"/>
+                            <span t-field="line.public_categ_id.parent_id.name"/>
+                            <span t-field="line.public_categ_id.name"/>
+                            <span t-field="line.pack_item_id.pack_id.block"/>
                         </h5>
                     </t>
-                    <t t-if="not line.product_id.website_pack_ids">
+                    <t t-if="not line.pack_item_id">
                         <h5>SINGLES</h5>
                     </t>
                 </td>
