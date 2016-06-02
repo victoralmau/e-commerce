@@ -74,7 +74,7 @@
       <div t-if="product_packs">
           <t t-call="website_sale_product_group.total_selected_amount"/>
           <t t-foreach="product_packs" t-as="product_pack">
-              <div class="oe_product oe_list oe_product_cart">
+              <div class="oe_list oe_product_cart">
                   <t t-call="website_sale_product_group.product_pack_item"/>
               </div>
           </t>
