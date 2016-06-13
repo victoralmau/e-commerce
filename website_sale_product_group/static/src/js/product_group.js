@@ -49,8 +49,8 @@
         },
         render_total: function (){
             var total_dic = this.calculate_total();
-            $("#total_selected_price").text(total_dic['total_price'].toFixed(2).toString() +' €');
-            $("#total_selected_lst_price").text(total_dic['total_lst_price'].toFixed(2).toString() +' €');
+            $(".js_total_selected_price").text(total_dic['total_price'].toFixed(2).toString() +' €');
+            $(".js_total_selected_lst_price").text(total_dic['total_lst_price'].toFixed(2).toString() +' €');
         },
         add_to_cart_group: function (){
             var self = this;
@@ -101,7 +101,6 @@
             return product_ids;
         }
     });
-
 
     $(document).ready(function () {
         var content = new openerp.website.productpack.Pack(this);
