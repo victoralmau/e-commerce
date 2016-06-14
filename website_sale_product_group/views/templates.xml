@@ -62,7 +62,7 @@
             <h4>Total of your selection: <span id="total_selected_price" class="js_total_selected_price"/></h4>
             <h5>Total of your selection without discount: <span id="total_selected_lst_price" class="js_total_selected_lst_price"/></h5>
             <button id="add_to_cart"
-                    class="btn btn-primary btn-md a-submit"
+                    class="btn btn-primary btn-md a-submit js_add_to_cart"
                     type="submit"
                     form="update_cart">Add to cart</button>
         </div>

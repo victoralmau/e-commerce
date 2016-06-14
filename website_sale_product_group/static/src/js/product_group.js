@@ -16,7 +16,7 @@
         },
         start: function () {
             var self = this;
-            this.$el.find('#add_to_cart').on('click', function (event) {
+            this.$el.find('.js_add_to_cart').on('click', function (event) {
                     event.preventDefault();
                     self.on_click();
                 });
