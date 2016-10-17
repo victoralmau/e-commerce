@@ -10,17 +10,19 @@ class ResUsers(models.Model):
 
     current_session = fields.Char(compute="_compute_current_session")
 
-    @api.one
+    @api.multi
     def _compute_current_session(self):
         """Know current session for this user."""
         try:
-            self.current_session = request.session.sid
+            sid = request.session.sid
         except AttributeError:
-            self.current_session = False
+            sid = False
+        for one in self:
+            one.current_session = sid
 
     @api.model
     def check_credentials(self, password):
         """Make all this session's wishlists belong to its owner user."""
         result = super(ResUsers, self).check_credentials(password)
-        self.env["wishlist.product"]._join_current_user_and_session()
+        self.env["product.wishlist"]._join_current_user_and_session()
         return result
