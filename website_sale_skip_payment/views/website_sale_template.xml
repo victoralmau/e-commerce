@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="confirmation" inherit_id="website_sale.confirmation">
+        <xpath expr="//div[@class='thanks_msg']//h2"
+               position="after">
+            <div class="alert alert-info" role="alert"
+                 t-if="not is_public_user">
+                Our team will check your order and send you payment
+                information soon.
+            </div>
+        </xpath>
+        <xpath expr="(//div[@class='oe_cart']//h3)[2]"
+               position="attributes">
+            <attribute name="t-if">
+                is_public_user
+            </attribute>
+        </xpath>
+        <xpath expr="(//div[@class='oe_cart']//table[@class='table'])[2]"
+               position="attributes">
+            <attribute name="t-if">
+                is_public_user
+            </attribute>
+        </xpath>
+    </template>
+
+</odoo>
