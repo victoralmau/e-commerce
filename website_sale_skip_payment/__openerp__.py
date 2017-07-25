@@ -17,5 +17,6 @@
     ],
     'data': [
         'views/website_sale_skip_payment.xml',
+        'views/website_sale_template.xml',
     ],
 }
