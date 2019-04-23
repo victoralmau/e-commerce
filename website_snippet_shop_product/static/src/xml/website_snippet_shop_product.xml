@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Tecnativa
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<template>
+
+    <t t-name="website_snippet_shop_product.products">
+        <t t-foreach="products" t-as="product">
+            <div>
+                <span t-esc="product.name"/>
+            </div>
+        </t>
+    </t>
+
+</template>

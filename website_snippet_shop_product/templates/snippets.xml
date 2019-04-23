@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <template id="place_into_bar" inherit_id="website.snippets" name="Place into bar">
+        <xpath expr="//div[@id='snippet_feature']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="website_snippet_shop_product.snippet_best_seller"
+               t-thumbnail="/website_snippet_shop_product/static/src/img/ui/bestseller.jpg"/>
+        </xpath>
+    </template>
+
+    <!--  Snippet options  -->
+    <template id="snippet_shop_product_opt" name="Snippet Shop Products Options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+
+            <!-- Select the category to display products -->
+            <div data-selector=".js_get_best_seller" data-js='js_get_best_seller_selectCategory'>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Select category</a>
+                    <ul class="dropdown-menu get_best_seller_category">
+                        <li data-filter_by_category_id="0" data-no-preview="true"><a>All Categories</a></li>
+                            <!-- the categoris list will be generated in js -->
+                    </ul>
+                </li>
+            </div>
+
+            <!-- Limit product displayed -->
+            <div data-selector=".js_get_best_seller" data-js='js_get_best_seller_limit'>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Limit number to...</a>
+                    <ul class="dropdown-menu" data-no-preview="true">
+                        <li data-products_limit="1"><a>1 product</a></li>
+                        <li data-products_limit="2"><a>2 products</a></li>
+                        <li data-products_limit="3"><a>3 products</a></li>
+                        <li data-products_limit="4"><a>4 products</a></li>
+                        <li data-products_limit="5"><a>5 products</a></li>
+                        <li data-products_limit="6"><a>6 products</a></li>
+                        <li data-products_limit="7"><a>7 products</a></li>
+                        <li data-products_limit="8"><a>8 products</a></li>
+                        <li data-products_limit="9"><a>9 products</a></li>
+                        <li data-products_limit="10"><a>10 products</a></li>
+                        <li data-products_limit_xx="10"><a>10 products</a></li>
+                    </ul>
+                </li>
+            </div>
+            
+        </xpath>
+    </template>
+
+    <template id="snippet_best_seller" name="Best Seller">
+        <section class="s_best_seller_product js_get_best_seller" data-loading="true" data-template="website_snippet_shop_product.best_seller_list_template">
+            <div class="container">
+                <h2 class="text-center">Best Seller Products</h2>
+                <div>
+                    <div>
+                        <H2>HOLA CARACOLA</H2>
+                    </div>
+                    <div>
+                        <span>HOLA CARACOLA</span>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+        </section>
+    </template>
+
+    <!-- Best seller products template -->
+    <template id="best_seller_list_template">
+        <t t-if="not products">
+            <t t-call="website_snippet_shop_product.no_products"/>
+        </t>
+        <t t-foreach="products" t-as="product">
+            <div class="product_list_template">
+                <div class="pull-left">
+                    <a t-att-href="/shop/product/e-com10-apple-wireless-keyboard-18">
+                        <span>TESTING</span>
+                    </a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- No products here, template -->
+    <template id="no_products">
+        <div class="container readable">
+            <div class="alert alert-warning alert-dismissible text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&#215;</span>
+                </button>
+                <h3>No products here...</h3>
+                <p>Please, be sure that your products are in publish state</p>
+            </div>
+        </div>
+    </template>
+
+</odoo>

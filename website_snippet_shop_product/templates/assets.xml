@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Tecnativa
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <template id="assets_editor" inherit_id="website.assets_editor">
+        <xpath expr="." position="inside">
+            <script src="/website_snippet_shop_product/static/src/js/editor.js"/>
+            <script src="/website_snippet_shop_product/static/src/js/shop_product_snippet_frontend.js"/>
+            <link type="text/css" rel="stylesheet" href="/website_snippet_shop_product/static/src/css/style.less"/>
+        </xpath>
+    </template>
+</odoo>
