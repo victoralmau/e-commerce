@@ -24,7 +24,7 @@ class ProductAttributeValues(WebsiteSale):
         domain = self._get_search_domain(search, category, attrib_values)
 
         product = request.env['product.template']
-        products = response.qcontext['products_all']
+        products = response.qcontext['products']
         if products:
             # get all products without limit
             selected_products = product.search(domain, limit=False)
