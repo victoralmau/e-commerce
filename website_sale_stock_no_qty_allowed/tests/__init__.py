@@ -1,1 +1,1 @@
-from . import test_website_sale_attribute_filter_category
+from . import test_website_sale_stock_no_qty_allowed

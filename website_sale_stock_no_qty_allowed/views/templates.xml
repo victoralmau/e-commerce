@@ -3,34 +3,33 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
 
-    <template id="products_attributes" inherit_id="website_sale.products_attributes" priority="9999">
-        <xpath expr="//form/ul" position="replace">
-                <h4>
-                    <i class="fa fa-filter" aria-hidden="true"/> <span>Filters by category</span>
-                </h4>
-                <t t-foreach="attribute_categories" t-as="attr_category">
-                    <t t-set="attributes_filtered" t-value="attributes.filtered(lambda x: x.category_id.id == attr_category[0])"/>
-                    <t t-set="display_category" t-value="any(len(a.value_ids) &gt;1 for a in attributes_filtered)"/>
-                    <t t-if="(not filtered_products or attributes_filtered) and display_category">
-                        <ul class="nav nav-stacked o_shop_collapse_attribute_filter" id="accordion">
-                            <li>
-                                <t t-set="values_selected" t-value="bool(attrib_set &amp; set(attributes_filtered.mapped('value_ids').ids))"/>
-                                <a data-toggle="collapse" t-attf-href="#collapse{{attr_category_index}}">
-                                    <i class="fa fas"/>
-                                    <span t-esc="attr_category[1]"/>
-                                </a>
-                                <ul t-attf-id="collapse{{attr_category_index}}" t-attf-class="nav nav-pills nav-stacked #{'collapse in' if values_selected else 'collapse'}">
+    <template id="stock_info">
+        <t t-if="line.product_id.inventory_availability == 'always_no_lock'">
+            <t t-set="virtual_available" t-value="line.product_id.virtual_available"/>
+            <div t-attf-class="availability_messages text-#{virtual_available and 'success' or 'danger'}">
+                <span><t t-esc="virtual_available"/> <t t-esc="line.product_uom.name"/> in stock</span>
+            </div>
+        </t>
+    </template>
 
-                                    <t>$0</t>
-
-                                </ul>
-                            </li>
-                        </ul>
-                    </t>
-                </t>
+    <!-- Shopping Cart Lines -->
+    <template id="cart_lines" inherit_id="website_sale.cart_lines">
+        <xpath expr="//td[hasclass('td-qty')]" position="inside">
+            <t t-call="website_sale_stock_no_qty_allowed.stock_info"/>
         </xpath>
-        <xpath expr="//t[@t-foreach='attributes']" position="attributes">
-            <attribute name="t-foreach">attributes_filtered</attribute>
+    </template>
+
+    <!-- Payment -->
+    <template id="payment" inherit_id="website_sale.payment">
+        <xpath expr="//table[@id='cart_products']//td[hasclass('td-qty')]" position="inside">
+            <t t-call="website_sale_stock_no_qty_allowed.stock_info"/>
+        </xpath>
+    </template>
+
+    <!-- Confirmation aditinal info -->
+    <template id="confirmation" inherit_id="website_sale.confirmation">
+        <xpath expr="//td[hasclass('td-qty')]" position="inside">
+            <t t-call="website_sale_stock_no_qty_allowed.stock_info"/>
         </xpath>
     </template>
 
