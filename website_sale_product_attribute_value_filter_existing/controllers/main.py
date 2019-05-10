@@ -29,6 +29,5 @@ class ProductAttributeValues(WebsiteSale):
                 domain, limit=False)
         # Load all products without limit for the filter check on attribute
         # values
-        response.qcontext['products_all'] = products
         response.qcontext['variants'] = products.mapped('product_variant_ids')
         return response
