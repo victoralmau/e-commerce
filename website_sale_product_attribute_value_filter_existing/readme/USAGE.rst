@@ -1,4 +1,3 @@
-To use this module you need to:
-
-* Go to Website Shop and active product attributes filter and the system only
-  display the attributes published and it's values if used.
+* Go to Website Shop
+* Active product attributes filter
+* System only display the attribute values if used.

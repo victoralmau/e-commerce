@@ -1,7 +1,7 @@
 # Copyright 2019 Tecnativa - Victor M.M. Torres
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Website Sale Attribute Value Exist',
+    'name': 'Website Sale Attribute Value Existing',
     'summary': 'Allow hide attributes values not used in variants',
     'version': '11.0.1.0.0',
     'development_status': 'Beta',
@@ -15,6 +15,10 @@
         'website_sale',
     ],
     'data': [
+        'views/assets.xml',
         'views/templates.xml',
     ],
+    'demo': [
+        'data/demo.xml',
+    ]
 }

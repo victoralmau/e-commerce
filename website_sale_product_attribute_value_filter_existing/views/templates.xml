@@ -5,18 +5,12 @@
 
     <template id="products_attributes" inherit_id="website_sale.products_attributes">
 
-        <xpath expr="//t[@t-foreach='attributes']" position="before">
-            <t t-set="variants" t-value="products_all.mapped('product_variant_ids')"/>
-        </xpath>
-
         <xpath expr="//t[@t-if=&quot;a.type == &apos;select&apos;&quot;]//t[@t-foreach='a.value_ids']/option" position="attributes">
-            <attribute name="t-if">len(v.product_ids) &gt;= 1</attribute>
+            <attribute name="t-if">variants &amp; v.product_ids</attribute>
         </xpath>
-
         <xpath expr="//t[@t-if=&quot;a.type == &apos;radio&apos;&quot;]//t[@t-foreach='a.value_ids']/li" position="attributes">
             <attribute name="t-if">variants &amp; v.product_ids</attribute>
         </xpath>
-
         <xpath expr="//t[@t-if=&quot;a.type == &apos;color&apos;&quot;]//t[@t-foreach='a.value_ids']/label" position="attributes">
             <attribute name="t-if">variants &amp; v.product_ids</attribute>
         </xpath>
