@@ -19,21 +19,17 @@ odoo.define('website_snippet_shop_product.best_seller_frontend', function (requi
             this.redrow();
             return this._super.apply(this, arguments);
         },
-
         destroy: function () {
             this._super.apply(this, arguments);
             this.clean();
         },
-
         redrow: function (debug) {
             this.clean(debug);
             this.build(debug);
         },
-
         clean: function (debug) {
             this.$target.empty();
         },
-
         build: function (debug) {
             var self     = this,
                 limit    = self.$target.data("products_limit"),
