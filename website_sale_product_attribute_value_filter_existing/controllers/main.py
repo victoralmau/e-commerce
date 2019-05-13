@@ -8,9 +8,11 @@ from odoo import http
 class ProductAttributeValues(WebsiteSale):
 
     def _get_search_domain(self, search, category, attrib_values):
+        # Store used domain in context to be reused after
         domain = super(ProductAttributeValues, self)._get_search_domain(
             search, category, attrib_values)
-        request.session['shop_search_domain'] = domain
+        new_context = dict(request.env.context, shop_search_domain=domain)
+        request.context = new_context
         return domain
 
     @http.route()
@@ -23,7 +25,7 @@ class ProductAttributeValues(WebsiteSale):
             **post)
         products = response.qcontext['products']
         if products:
-            domain = request.session.get('shop_search_domain', [])
+            domain = request.env.context.get('shop_search_domain', [])
             # get all products without limit pagination
             products = request.env['product.template'].search(
                 domain, limit=False)
