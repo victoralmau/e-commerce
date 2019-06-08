@@ -7,53 +7,39 @@ odoo.define("website_sale_product_attribute_filter_visibility.tour", function (r
     var tour = require("web_tour.tour");
     var base = require("web_editor.base");
 
-    var steps = [
-          
-    /*    {
+    var steps = [  
+       {
             content: "open customize menu",
             trigger: '#customize-menu > a',
-            timeout: 1000,
         },
         {
             content: "click on 'Product Attribute's Filter'",
             trigger: "#customize-menu a:contains(Product Attribute's Filter)",
-            timeout: 1000,
-        },
-        */
-        {
-            trigger: "a:contains('Customize')",
+            
         },
         {
-            trigger: "a:contains('Product Attribute')",
-        },
-        {
-            trigger: "a[href='/shop']",
+            content: "Check that Test color is showed as attibute",
+            trigger: "a:contains('Customizable Desk')",
             extra_trigger: ".js_attributes:has(strong:contains('Test Color'))",
 
         },
+        {
+            content: "Check that Test Size is showed as attibute",
+            trigger: "a:contains('Customizable Desk')",
+            extra_trigger: ".js_attributes:not(:has(strong:contains('Test Size')))",
+
+        },
+        
        {
-            trigger: "a:contains('Customizable Desk')",
-        },
-    
-        {
-            trigger: "a[href='/shop']",
-        },
-        /*
-        {
-            trigger: "a:contains('Customizable Desk')",
-           extra_trigger: ".js_attributes:not(:has(strong:contains('Test Size')))", 
-        }, */
- /*     
-        {
             content: "open customize menu",
             trigger: '#customize-menu > a',
-            timeout: 1000,
         },
+        
         {
             content: "click on 'Product Attribute's Filter'",
             trigger: "#customize-menu a:contains(Product Attribute's Filter)",
-            timeout: 1000,
-        }, */
+        },        
+
     ];
     tour.register("website_sale_product_attribute_filter_visibility",
         {

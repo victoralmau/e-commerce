@@ -15,5 +15,5 @@ class WebsiteSaleHttpCase(HttpCase):
             url_path="/",
             code="%s.run('%s')" % tour,
             ready="%s.tours['%s'].ready" % tour,
-            login="admin"
+            login="admin" , password="admin",
         )
