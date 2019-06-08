@@ -22,14 +22,14 @@ odoo.define("website_sale_product_attribute_filter_visibility.tour", function (r
         },
         {
             trigger: "a:contains('Customizable Desk')",
-            extra_trigger: ".js_attributes:has(strong:contains('Test Color'))",
+            /* extra_trigger: ".js_attributes:has(strong:contains('Test Color'))", */
         },
         {
             trigger: "a[href='/shop']",
         },
         {
             trigger: "a:contains('Customizable Desk')",
-            extra_trigger: ".js_attributes:not(:has(strong:contains('Test Size')))",
+           /* extra_trigger: ".js_attributes:not(:has(strong:contains('Test Size')))", */
         },
  /*     
         {

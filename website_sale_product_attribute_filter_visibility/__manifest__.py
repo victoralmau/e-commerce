@@ -17,7 +17,6 @@
     'data': [
         'views/assets.xml',
         'views/product_attribute_views.xml',
-        #'data/assets.xml',
     ],
     'demo': [
         'data/demo.xml',
