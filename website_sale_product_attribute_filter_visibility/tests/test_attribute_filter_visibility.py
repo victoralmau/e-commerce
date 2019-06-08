@@ -6,7 +6,7 @@ from odoo.tests.common import HttpCase
 class WebsiteSaleHttpCase(HttpCase):
 
     def test_ui_website(self):
-        """Test tour."""
+        """Test frontend tour."""
         tour = (
             "odoo.__DEBUG__.services['web_tour.tour']",
             "website_sale_product_attribute_filter_visibility",

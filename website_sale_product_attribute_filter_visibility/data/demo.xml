@@ -6,14 +6,17 @@
         <field name="name">Test Color</field>
         <field name="create_variant">always</field>
     </record>
+    
     <record id="product_attribute_value_color_red" model="product.attribute.value">
         <field name="name">Test Red</field>
         <field name="attribute_id" ref="product_attribute_test_color"/>
     </record>
+    
     <record id="product_attribute_value_color_green" model="product.attribute.value">
         <field name="name">Test Green</field>
         <field name="attribute_id" ref="product_attribute_test_color"/>
     </record>
+    
     <record id="product_attribute_value_color_blue" model="product.attribute.value">
         <field name="name">Test Blue</field>
         <field name="attribute_id" ref="product_attribute_test_color"/>
@@ -24,10 +27,12 @@
         <field name="name">Test Size</field>
         <field name="create_variant">always</field>
     </record>
+    
     <record id="product_attribute_value_test_size_small" model="product.attribute.value">
         <field name="name">Size Small</field>
         <field name="attribute_id" ref="product_attribute_test_size"/>
     </record>
+    
     <record id="product_attribute_value_test_size_large" model="product.attribute.value">
         <field name="name">Size Large</field>
         <field name="attribute_id" ref="product_attribute_test_size"/>
@@ -38,6 +43,7 @@
         <field name="attribute_id" ref="product_attribute_test_color"/>
         <field name="value_ids" eval="[(6, 0, [ref('product_attribute_value_color_red'), ref('product_attribute_value_color_green')])]"/>
     </record>
+    
     <record id="product_attribute_line_test_size" model="product.template.attribute.line">
         <field name="product_tmpl_id" ref="sale.product_product_4e_product_template"/>
         <field name="attribute_id" ref="product_attribute_test_size"/>
