@@ -4,7 +4,7 @@
     <record id="product_attribute_test_color" model="product.attribute">
         <field name="website_published" eval="True"/>
         <field name="name">Test Color</field>
-        <field name="create_variant">always</field>
+        <field name="create_variant">no_variant</field>
     </record>
     
     <record id="product_attribute_value_color_red" model="product.attribute.value">
@@ -25,7 +25,7 @@
     <record id="product_attribute_test_size" model="product.attribute">
         <field name="website_published" eval="False"/>
         <field name="name">Test Size</field>
-        <field name="create_variant">always</field>
+        <field name="create_variant">no_variant</field>
     </record>
     
     <record id="product_attribute_value_test_size_small" model="product.attribute.value">
