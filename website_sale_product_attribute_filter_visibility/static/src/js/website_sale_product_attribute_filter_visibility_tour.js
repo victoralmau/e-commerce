@@ -8,21 +8,25 @@ odoo.define("website_sale_product_attribute_filter_visibility.tour", function (r
     var base = require("web_editor.base");
 
     var steps = [
- 
-       {
-            content: "open customize menu",
+         {
             trigger: "a:contains('Customize')",
         },
         {
-            content: "click on 'Product Attribute's Filter' to enable",
             trigger: "a:contains('Product Attribute')",
         },
-
         {
-            content: "Check that Test color is showed as attribute",
-            extra_trigger: ".js_attributes:has(strong:contains('Test Color'))",
+            trigger: "a[href='/shop']",
+        },
+        {
             trigger: "a:contains('Customizable Desk')",
-            
+            extra_trigger: ".js_attributes:has(strong:contains('Test Color'))",
+        },
+        {
+            trigger: "a[href='/shop']",
+        },
+        {
+            trigger: "a:contains('Customizable Desk')",
+            extra_trigger: ".js_attributes:not(:has(strong:contains('Test Size')))",
         },
     /*
         {
