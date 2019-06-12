@@ -59,7 +59,7 @@ class WebsiteSaleHttpCase(HttpCase):
                 })]
         })
 
-        # Active attribute's filter in /shop. By default is disable.
+        # Active attribute's filter in /shop. By default it's disabled.
         self.env.ref('website_sale.products_attributes').active = True
 
     def test_ui_website(self):
