@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tecnativa_access_test_form_view" model="ir.ui.view">
+        <field name="name">tecnativa.access.test.form</field>
+        <field name="model">tecnativa.access.test</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Tecnativa Access Test">
+                <sheet>
+                    <field name='name'/>
+                    <field name='duration'/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tecnativa_access_test_form_extended_view" model="ir.ui.view">
+        <field name="name">tecnativa.access.test.extended.form</field>
+        <field name="model">tecnativa.access.test</field>
+        <field name="inherit_id" ref="website_access_test.tecnativa_access_test_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[name=duration]" position="after">
+                <field name="website_description"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

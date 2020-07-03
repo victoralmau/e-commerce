@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="tecnativa_access_test_01" model="tecnativa.access.test">
+        <field name="name">Welcome!</field>
+        <field name="website_description">
+            &lt;p style='color:green' &gt;Congrats! The module appears to work ;)&lt;/p&gt;
+        </field>
+        <field name="duration">42</field>
+    </record>
+    <record id="tecnativa_access_test_02" model="tecnativa.access.test">
+        <field name="name">Other Record</field>
+    </record>
+
+</odoo>

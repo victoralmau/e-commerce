@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="open_tecnativa_access_test_form" model="ir.actions.act_window">
+        <field name="name">Tecnativa Access Test</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">tecnativa.access.test</field>
+        <field name="view_type">form</field>
+    </record>
+    <menuitem id="menu_tecnativa_access_test" parent="base.menu_custom" action="open_tecnativa_access_test_form"/>
+
+</odoo>

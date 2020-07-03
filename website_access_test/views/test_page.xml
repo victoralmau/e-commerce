@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Page template for Tecnativa Access Test -->
+    <template id="tectnativa_access_test" name="Tecnativa Access Test">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Tecnativa Access Test</t>
+            <div id="wrap" t-attf-class="wrapper">
+                <div class="container">
+                    <ul>
+                        <li class="my-3">
+                            <span><t t-esc="record.name" /></span>
+                            <div class="pt-2">
+                                <t t-raw="record.website_description"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>
