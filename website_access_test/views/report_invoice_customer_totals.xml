@@ -11,16 +11,18 @@
             - INV0010: $22.77
     -->
     <data>
-        <template id="report_invoice_customer_totals_document">
-            <t t-call="web.external_layout">
-            </t>
-        </template>
 
         <template id="report_invoice_customer_totals">
             <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="o">
-                    <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
-                    <t t-call="website_access_test.report_invoice_customer_totals_document" t-lang="lang"/>
+                <t t-foreach="docs.mapped('partner_id')" t-as="partner_id">
+                  <h3 t-esc="partner_id.name" />
+                  <ul>
+                    <t t-foreach="docs" t-as="o">
+                      <t t-if="o.partner_id.id==partner_id.id">
+                        <li><span t-field="o.number"/>: <span t-field="o.amount_total"/></li>
+                      </t>
+                    </t>    
+                  </ul>
                 </t>
             </t>
         </template>
@@ -32,7 +34,6 @@
             report_type="qweb-pdf"
             name="website_access_test.report_invoice_customer_totals"
             file="website_access_test.report_invoice_customer_totals"
-            attachment="(object.state in ('open','in_payment','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
             print_report_name="(object._get_report_base_filename())"
         />
     </data>

@@ -6,7 +6,7 @@ from odoo.http import request
 
 
 class Website(http.Controller):
-    @http.route(['/tecnativa/access/test'], type='http', auth='user',
+    @http.route(['/tecnativa/access/test'], type='http', auth="public",
                 website=True)
     def tecnativa_access_test(self):
         record = request.env['tecnativa.access.test'].search([

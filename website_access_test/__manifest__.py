@@ -10,7 +10,6 @@
     'license': 'AGPL-3',
     'depends': [
         'account',
-        'web_responsive',
         'website_sale',
     ],
     'data': [
@@ -23,5 +22,5 @@
     'demo': [
         "demo/demo.xml",
     ],
-    'installable': False,
+    'installable': True,
 }
