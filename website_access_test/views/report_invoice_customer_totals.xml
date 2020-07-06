@@ -15,15 +15,13 @@
         <template id="report_invoice_customer_totals">
             <t t-call="web.html_container">
                 <t t-foreach="docs.mapped('partner_id')" t-as="partner_id">
-                  <h3 t-esc="partner_id.name" />
-                  <ul>
-                    <t t-foreach="docs" t-as="o">
-                      <t t-if="o.partner_id.id==partner_id.id">
-                        <li><span t-field="o.number"/>: <span t-field="o.amount_total"/></li>
-                      </t>
-                    </t>    
-                  </ul>
-                </t>
+                    <p><span t-esc="partner_id.name" />: <span t-esc="sum(o.amount_total for o in docs.filtered(lambda docs: docs.partner_id.id == partner_id.id))" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: docs.filtered(lambda docs: docs.partner_id.id == partner_id.id)[0].currency_id}" /></p>
+                    <ul>
+                        <t t-foreach="docs.filtered(lambda docs: docs.partner_id.id == partner_id.id)" t-as="o">
+                          <li><span t-field="o.number"/>: <span t-field="o.amount_total"/></li>
+                        </t>
+                    </ul>
+                </t>                
             </t>
         </template>
 
